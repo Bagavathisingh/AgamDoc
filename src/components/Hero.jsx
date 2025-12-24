@@ -11,7 +11,7 @@ const Hero = ({ onGetStarted, onGitHub }) => {
                 className="mb-6 inline-block"
             >
                 <span className="px-3 py-1 bg-zinc-900 border border-zinc-700 rounded-full text-xs font-medium text-zinc-300">
-                    v1.0.0 Beta is live
+                    v0.1.1 stable is live
                 </span>
             </motion.div>
 
