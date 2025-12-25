@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
-import LightPillar from '../components/ComponentUI/backgroud';
 import Loader from '../components/Loader';
 import Team from '../components/Team';
 
@@ -38,15 +37,11 @@ const Home = () => {
             {/* 1. Solid Dark Background */}
             <div className="fixed inset-0 bg-zinc-950 -z-20" />
 
-            {/* 2. Background Effect (Light Pillar) */}
-            <div className="fixed inset-0 -z-10 pointer-events-none opacity-70 mix-blend-screen">
-                <LightPillar
-                    topColor="#3b82f6"
-                    bottomColor="#a855f7"
-                    intensity={0.4}
-                    pillarWidth={2.5}
-                    rotationSpeed={0.7}
-                />
+            {/* 2. Lightweight CSS Gradient Background */}
+            <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-b from-blue-950/20 via-purple-950/10 to-zinc-950/0"></div>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-radial from-blue-500/10 via-purple-500/5 to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+                <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-radial from-purple-500/10 via-pink-500/5 to-transparent rounded-full blur-3xl animate-pulse-slow-delayed"></div>
             </div>
 
             <div className="relative w-full">

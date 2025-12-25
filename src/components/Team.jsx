@@ -48,7 +48,7 @@ const TeamMemberCard = ({ member }) => {
             transition={{ duration: 0.5, delay: member.delay }}
             className="group relative h-full"
         >
-            <div className="absolute -inset-0.5 bg-gradient-to-br opacity-50 blur-sm transition-all duration-300 group-hover:opacity-100 group-hover:blur-md"
+            <div className="absolute -inset-0.5 bg-gradient-to-br opacity-30 transition-all duration-300 group-hover:opacity-60"
                 style={{ backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))` }}
             >
                 <div className={`w-full h-full bg-gradient-to-br ${member.gradient} opacity-20`}></div>
@@ -57,12 +57,12 @@ const TeamMemberCard = ({ member }) => {
             <div className="relative h-full bg-zinc-950 border border-zinc-900 rounded-2xl p-6 overflow-hidden hover:border-zinc-700 transition-colors duration-300 flex flex-col items-center text-center">
                 {/* Background Gradient Blob */}
                 <div className={`absolute top-0 inset-x-0 h-px bg-gradient-to-r ${member.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                <div className={`absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br ${member.gradient} opacity-[0.03] group-hover:opacity-[0.08] blur-3xl rounded-full transition-opacity duration-500`} />
+                <div className={`absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br ${member.gradient} opacity-[0.03] group-hover:opacity-[0.08] rounded-full transition-opacity duration-500`} />
 
                 {/* Icon */}
                 <div className="relative mb-6">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${member.gradient} blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
-                    <div className="relative w-16 h-16 rounded-2xl bg-zinc-900/80 border border-zinc-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 backdrop-blur-sm">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${member.gradient} opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
+                    <div className="relative w-16 h-16 rounded-2xl bg-zinc-900/80 border border-zinc-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                         <Icon className="text-zinc-100" size={32} />
                     </div>
                 </div>
