@@ -8,6 +8,7 @@ import DataStructures from '../components/docs/DataStructures';
 import Reference from '../components/docs/Reference';
 import AdvancedFeatures from '../components/docs/AdvancedFeatures';
 import SkeletonDoc from '../components/SkeletonDoc';
+import Footer from '../components/Footer';
 
 const Docs = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -53,9 +54,7 @@ const Docs = () => {
 
                     <AdvancedFeatures />
 
-                    <footer className="mt-20 pt-8 border-t border-zinc-800 text-center text-zinc-600">
-                        <p>&copy; 2024 Agam Language. All rights reserved.</p>
-                    </footer>
+                    <Footer />
                 </div>
             </main>
         </div>

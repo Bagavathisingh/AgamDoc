@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Loader from '../components/Loader';
 import Team from '../components/Team';
+import Footer from '../components/Footer';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -51,6 +52,10 @@ const Home = () => {
 
                 <div className="w-full">
                     <Team />
+                </div>
+
+                <div className="max-w-4xl mx-auto px-6 w-full">
+                    <Footer />
                 </div>
             </div>
         </div>
