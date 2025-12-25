@@ -25,3 +25,23 @@
 body {
   @apply bg-zinc-950 text-zinc-50 antialiased selection:bg-purple-500/30;
 }
+
+/* Global Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-zinc-950;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800 rounded-full border-[2px] border-zinc-950 hover:bg-zinc-700 transition-colors duration-300;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #27272a #09090b; /* zinc-800 zinc-950 */
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import ContentSection from '../ContentSection';
+import { Type, Code, Zap, ShieldCheck, Globe } from 'lucide-react';
 
 const GettingStarted = () => {
     return (
@@ -20,11 +21,11 @@ const GettingStarted = () => {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-zinc-800">
-                            <tr><td className="px-6 py-4">🇮🇳 <strong>Tamil Keywords</strong></td><td className="px-6 py-4">Program using words you already know</td></tr>
-                            <tr><td className="px-6 py-4">🐍 <strong>Python-like Syntax</strong></td><td className="px-6 py-4">Easy to learn, familiar structure</td></tr>
-                            <tr><td className="px-6 py-4">⚡ <strong>Fast</strong></td><td className="px-6 py-4">Built with Rust for speed</td></tr>
-                            <tr><td className="px-6 py-4">🔒 <strong>Safe</strong></td><td className="px-6 py-4">Memory-safe and type-checked</td></tr>
-                            <tr><td className="px-6 py-4">🌐 <strong>Bilingual</strong></td><td className="px-6 py-4">Supports English keywords too</td></tr>
+                            <tr><td className="px-6 py-4 flex items-center gap-2"><Type className="text-pink-400" size={18} /> <strong>Tamil Keywords</strong></td><td className="px-6 py-4">Program using words you already know</td></tr>
+                            <tr><td className="px-6 py-4 flex items-center gap-2"><Code className="text-green-400" size={18} /> <strong>Python-like Syntax</strong></td><td className="px-6 py-4">Easy to learn, familiar structure</td></tr>
+                            <tr><td className="px-6 py-4 flex items-center gap-2"><Zap className="text-yellow-400" size={18} /> <strong>Fast</strong></td><td className="px-6 py-4">Built with Rust for speed</td></tr>
+                            <tr><td className="px-6 py-4 flex items-center gap-2"><ShieldCheck className="text-blue-400" size={18} /> <strong>Safe</strong></td><td className="px-6 py-4">Memory-safe and type-checked</td></tr>
+                            <tr><td className="px-6 py-4 flex items-center gap-2"><Globe className="text-purple-400" size={18} /> <strong>Bilingual</strong></td><td className="px-6 py-4">Supports English keywords too</td></tr>
                         </tbody>
                     </table>
                 </div>

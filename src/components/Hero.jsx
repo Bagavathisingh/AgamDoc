@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
 const Hero = ({ onGetStarted, onGitHub }) => {
     return (
@@ -37,7 +38,7 @@ const Hero = ({ onGetStarted, onGitHub }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-wrap gap-4 justify-center"
+                className="flex flex-wrap gap-4 justify-center mb-16"
             >
                 <button
                     onClick={onGetStarted}
@@ -52,6 +53,31 @@ const Hero = ({ onGetStarted, onGitHub }) => {
                 >
                     View on GitHub
                 </button>
+            </motion.div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="flex flex-col items-center gap-3 mt-8"
+            >
+                <p className="text-xs text-zinc-600 uppercase tracking-widest font-medium">
+                    Meet the Team
+                </p>
+                <motion.div
+                    animate={{
+                        y: [0, 8, 0],
+                    }}
+                    transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="flex flex-col items-center"
+                >
+                    <ChevronDown className="text-zinc-600" size={20} />
+                </motion.div>
             </motion.div>
         </div>
     );

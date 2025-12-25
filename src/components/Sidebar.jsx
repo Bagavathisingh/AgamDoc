@@ -65,6 +65,32 @@ export default function Sidebar({ className }) {
     const [activeSlug, setActiveSlug] = useState('introduction');
     const [openSections, setOpenSections] = useState({});
     const [isMobileOpen, setIsMobileOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const filteredSidebarData = React.useMemo(() => {
+        if (!searchQuery) return sidebarData;
+
+        return sidebarData.map(section => {
+            const filteredItems = section.items.filter(item =>
+                item.title.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+            return {
+                ...section,
+                items: filteredItems
+            };
+        }).filter(section => section.items.length > 0);
+    }, [searchQuery]);
+
+    // Auto-expand sections when searching
+    useEffect(() => {
+        if (searchQuery) {
+            const allOpen = {};
+            filteredSidebarData.forEach(section => {
+                allOpen[section.title] = true;
+            });
+            setOpenSections(allOpen);
+        }
+    }, [searchQuery, filteredSidebarData]);
 
     // Initialize all sections as open by default or based on logic
     useEffect(() => {
@@ -122,7 +148,7 @@ export default function Sidebar({ className }) {
 
     return (
         <>
-            {/* Mobile Trigger */}
+
             <button
                 onClick={() => setIsMobileOpen(true)}
                 className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-zinc-900 text-zinc-400 rounded-md border border-zinc-800"
@@ -130,7 +156,7 @@ export default function Sidebar({ className }) {
                 <Menu size={20} />
             </button>
 
-            {/* Mobile Overlay */}
+
             <AnimatePresence>
                 {isMobileOpen && (
                     <motion.div
@@ -143,7 +169,7 @@ export default function Sidebar({ className }) {
                 )}
             </AnimatePresence>
 
-            {/* Sidebar Container */}
+
             <motion.aside
                 className={cn(
                     "fixed top-0 left-0 bottom-0 z-50 w-64 bg-zinc-950 border-r border-zinc-800 overflow-hidden flex flex-col",
@@ -152,7 +178,7 @@ export default function Sidebar({ className }) {
                     className
                 )}
             >
-                {/* Header */}
+
                 <div className="p-6 border-b border-zinc-900">
                     <div className="flex items-center justify-between mb-4">
                         <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -169,16 +195,17 @@ export default function Sidebar({ className }) {
                     <div className="relative group">
                         <Search className="absolute left-3 top-2.5 text-zinc-500 group-focus-within:text-blue-400 transition-colors" size={16} />
                         <input
-                            type="text"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Search..."
                             className="w-full bg-zinc-900 border border-zinc-800 text-sm text-zinc-300 rounded-md pl-9 pr-4 py-2 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all placeholder:text-zinc-600"
                         />
                     </div>
                 </div>
 
-                {/* Scrollable Content */}
+
                 <div className="flex-1 overflow-y-auto py-6 px-4 space-y-6 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
-                    {sidebarData.map((section) => (
+                    {filteredSidebarData.map((section) => (
                         <div key={section.title} className="space-y-2">
                             <button
                                 onClick={() => toggleSection(section.title)}
@@ -236,7 +263,7 @@ export default function Sidebar({ className }) {
                     ))}
                 </div>
 
-                {/* Footer */}
+            
                 <div className="p-4 border-t border-zinc-900 text-xs text-zinc-600 text-center">
                     <p>v0.1.1 Agam docs</p>
                 </div>

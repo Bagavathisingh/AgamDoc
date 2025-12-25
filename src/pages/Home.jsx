@@ -1,8 +1,9 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import LightPillar from '../components/ComponentUI/backgroud';
 import Loader from '../components/Loader';
+import Team from '../components/Team';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Home = () => {
 
     const handleGetStarted = () => {
         setIsLoading(true);
-        // Fake loading delay for effect
+
         setTimeout(() => {
             navigate('/docs');
         }, 1500);
@@ -33,22 +34,29 @@ const Home = () => {
     }
 
     return (
-        <div className="min-h-screen text-zinc-50 font-sans selection:bg-blue-500/30 relative flex items-center justify-center">
+        <div className="min-h-screen text-zinc-50 font-sans selection:bg-blue-500/30 relative overflow-x-hidden">
             {/* 1. Solid Dark Background */}
             <div className="fixed inset-0 bg-zinc-950 -z-20" />
 
             {/* 2. Background Effect (Light Pillar) */}
-            <div className="fixed inset-0 -z-10 pointer-events-none opacity-40 mix-blend-screen">
+            <div className="fixed inset-0 -z-10 pointer-events-none opacity-70 mix-blend-screen">
                 <LightPillar
                     topColor="#3b82f6"
                     bottomColor="#a855f7"
                     intensity={0.4}
-                    pillarWidth={2.0}
+                    pillarWidth={2.5}
+                    rotationSpeed={0.7}
                 />
             </div>
 
-            <div className="max-w-4xl mx-auto px-6 py-12 lg:py-16 w-full">
-                <Hero onGetStarted={handleGetStarted} onGitHub={handleGitHub} />
+            <div className="relative w-full">
+                <div className="max-w-4xl mx-auto px-6 pt-20 pb-12 lg:pt-32 lg:pb-16 w-full">
+                    <Hero onGetStarted={handleGetStarted} onGitHub={handleGitHub} />
+                </div>
+
+                <div className="w-full">
+                    <Team />
+                </div>
             </div>
         </div>
     );
